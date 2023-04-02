@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h3>Picture Detail</h3>
+<button><a th:href="@{/pictures}">
+    Back to picture list
+</a></button>
+
+
+<div id="detail" border="1">
+    <div class="detail">
+        <label>Code:</label>
+        <label th:text="${pictures.getPictureCode()}"></label>
+    </div>
+    <div class="detail">
+        <label>Height:</label>
+        <label th:text="${pictures.getHeight()}"></label>
+    </div>
+    <div class="detail">
+        <label>Width:</label>
+        <label th:text="${pictures.getWidth()}"></label>
+    </div>
+    <div class="detail">
+        <label>Material:</label>
+        <label th:text="${pictures.getMaterial()}"></label>
+    </div>
+    <div class="detail">
+        <label>Price:</label>
+        <label th:text="${pictures.getPrice()}"></label>
+    </div>
+    <div class="detail">
+        <label>Description:</label>
+        <label th:text="${pictures.getDescription()}"></label>
+    </div>
+    <div class="detail">
+        <label>Category:</label>
+        <label th:text="${pictures.category.name}"></label>
+    </div>
+</div>
+</body>
+</html>

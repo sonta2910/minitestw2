@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+  <meta charset="UTF-8">
+  <title>Create new picture</title>
+</head>
+<body>
+<h1>Form Update</h1>
+<button>
+  <a th:href="@{/pictures}">Back to list picture</a></button>
+<form action="/pictures/update" method="post" th:object="${picture}">
+  <table border="1" style="border-collapse: collapse">
+    <tr>
+      <th>Code</th>
+      <th>Height</th>
+      <th>Width</th>
+      <th>Material</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th>Category</th>
+    </tr>
+    <tr>
+      <input type="text" th:value="${picture.getId()}" th:field="*{id}" hidden>
+      <td><input type="text" th:field="*{pictureCode}" th:value="${picture.getPictureCode()}"></td>
+      <td><input type="text" th:field="*{height}" th:value="${picture.getHeight()}"></td>
+      <td><input type="text" th:field="*{width}" th:value="${picture.getWidth()}"></td>
+      <td><input type="text" th:field="*{material}" th:value="${picture.getMaterial()}"></td>
+      <td><input type="text" th:field="*{price}" th:value="${picture.getPrice()}"></td>
+      <td><input type="text" th:field="*{description}" th:value="${picture.getDescription()}"></td>
+      <td><select th:field="*{category}">
+        <option th:each="c : ${categories}" th:text="${c.name}" th:value="${c.id}"></option>
+      </select></td>
+    </tr>
+    <button type="submit">Update</button>
+  </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>List Pictures</h1>
+<form th:action="@{/pictures/search}" method="get">
+    <input type="text" id="pictureCode" name="pictureCode">
+    <button type="submit">SEARCH</button>
+</form>
+
+<button><a th:href="@{/pictures/create}">Create new</a></button>
+<button><a th:href="@{/pictures/categories}">List Category</a></button>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>CODE</th>
+        <th>Width</th>
+        <th>Height</th>
+        <th>Material</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th colspan="2">Action</th>
+    </tr>
+    <tr th:each="p : ${pictures}">
+        <td th:text="${p.id}"></td>
+        <td><a th:text="${p.pictureCode}" href="#" th:href="@{/pictures/detail/__${p.id}__}"></a></td>
+        <td th:text="${p.width}"></td>
+        <td th:text="${p.height}"></td>
+        <td th:text="${p.material}"></td>
+        <td th:text="${p.description}"></td>
+        <td th:text="${p.price}"></td>
+        <td><a href="#" th:href="@{/pictures/category}" th:text="${p.category.name}"></a></td>
+        <td><button><a th:href="@{/pictures/update/{id}(id=${p.id})}">Update</a></button></td>
+        <td><button><a th:href="@{/pictures/delete/__${p.id}__}">Delete</a></button></td>
+    </tr>
+</table>
+</body>
+</html>
